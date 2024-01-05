@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web page</title>
+    <link href="external.css" rel="stylesheet">
+    <style>
+        img
+        {
+            width: 200px;
+            height: 200px;
+            border:yellow solid 10px ;
+            border-radius: 19px;
+
+        }
+    </style>
+</head>
+<body>
+    <h1 style="font-size: 12px; font-weight: bold; font-family: Verdana;">This is my First Header </h1>
+    <h1 style="font-size: 12px; font-weight: bold; font-family: Verdana;">This is my Second Header</h1>
+    <img src="1.jpg" alt=" nature photo">
+    <img src="2.jpg" alt=" nature photo"><br><br>
+    <button id="a" onclick="pt()">Submit</button>
+    <button id="b" onclick="p()">Reset</button>
+
+    <script>
+        function pt() {
+            document.body.style.backgroundColor = "red";
+        }
+        function p() {
+            document.body.style.backgroundColor = "skyblue";
+        }
+        </script>
+</body>
+</html>

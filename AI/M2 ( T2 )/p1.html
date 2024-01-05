@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Order Logic Proof</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  
+  <div class="main1">
+    <h1 class="title">Resolution Using First Order Logic: </h1><br>
+      <h2>1. All Humans are <select id="statement1">
+          <option value="Mortal">mortal</option>
+          <option value="not Mortal">not mortal</option>
+        </select></h2>
+      <h2>2. Socrates is <select id="statement2">
+          <option value="Human">Human</option>
+          <option value="not Human">not Human</option>
+        </select></h2>
+      <h1>Therefore:</h1>
+      <h2 class="hp">Socrates is <select id="thereforeStatement">
+          <option value="Mortal">Mortal</option>
+          <option value="not Mortal">not Mortal</option>
+        </select></h2>
+      <button id="calculateButton" onclick="givenoutput()">Calculate Overall Statement</button>
+      <h2>Overall Given Statement is:</h2>
+      <p id="output1"></p>
+      <button id="calculateButton" onclick="answer()">Check Answer</button>
+      <h2>Answer:</h2>
+      <p id="output2"></p>
+      <!-- <button id="final" onclick="answer()">Check Answer</button> -->
+
+  </div>
+  <script>
+    function givenoutput() {
+      var statement1 = document.getElementById("statement1").value;
+      var statement2 = document.getElementById("statement2").value;
+      var thereforeStatement = document.getElementById("thereforeStatement").value;
+
+      var overallStatement = "All Humans are " + statement1 + ", Socrates is " + statement2 + ". Therefore, Socrates is " + thereforeStatement;
+      document.getElementById("output1").innerText = overallStatement;
+    }
+
+    function answer() {
+        var statement1 = document.getElementById("statement1").value;
+        var statement2 = document.getElementById("statement2").value;
+        var thereforeStatement = document.getElementById("thereforeStatement").value;
+      if ((statement1 === 'Mortal' && statement2 === 'Human') || (statement1 === 'not Mortal' && statement2 === 'not Human')) 
+      {
+        if (thereforeStatement === 'Mortal') {
+          document.getElementById("output2").innerText = "Proven";
+          button.style.display = "none";
+        } 
+        else 
+        {
+          document.getElementById("output2").innerText = "Disproven";
+          const button = document.createElement('button');
+          button.textContent = 'Get Correct Answer';
+          button.addEventListener('click', () => {
+            const paragraph = document.createElement('p');
+            paragraph.textContent = "All Humans are " + statement1 + ", Socrates is " + statement2 + ". Therefore, Socrates is mortal";
+            // document.body.appendChild(paragraph);
+            alert(paragraph.textContent);
+            location.reload();
+          });
+          document.body.appendChild(button);
+
+        }
+      } else if ((statement1 === 'not Mortal' && statement2 === 'Human') || (statement1 === 'Mortal' && statement2 === 'not Human')) 
+      {
+        if (thereforeStatement === 'not Mortal') 
+        {
+          document.getElementById("output2").innerText = "Proven";
+          button.style.display = "none";
+        } 
+        else 
+        {
+          document.getElementById("output2").innerText = "Disproven";
+          const button = document.createElement('button');
+          button.textContent = 'Get Correct Answer';
+          button.addEventListener('click', () => {
+            const paragraph = document.createElement('p');
+            paragraph.textContent = "All Humans are " + statement1 + ", Socrates is " + statement2 + ". Therefore, Socrates is not mortal";
+            // document.body.appendChild(paragraph);
+            alert(paragraph.textContent);
+            location.reload();
+          });
+          document.body.appendChild(button);
+        }
+      }
+    }
+  </script>
+</body>
+</html>

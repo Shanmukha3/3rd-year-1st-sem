@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>webpage</title>
+    </head>
+    <body>
+    <form action="#"method="post">
+        <div>
+            <h1>Welcome to my website!</h1>
+            <p>This is the home page of my website.</p>
+        </div>
+        <div>
+            <h1>About Me</h1>
+            <p>My name is John Doe and I'm a web developer.</p>
+            <ol>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+            </ol>
+        <ul>
+            <li>Row 1, Column 1 Row 1, Column 2</li>
+            <li>Row 2, Column 1 Row 2, Column 2</li>
+            <ul>
+        </div>
+        <div>
+            <h1>Contact Me</h1>
+            <label for="username" >Name:</label>
+            <input type="text"id="Name"name="username"><br><br>
+
+            <label for="email" >Email:</label>
+            <input type="email"id="Email"name="email"><br><br>
+
+            <label for="message">Message:</label>
+            <textarea id="Message"name="message"rows="3"cols="20"></textarea><br><br>
+
+            <input type="submit" value="Send">
+        </div>
+    </form>
+    </body>
+</html>

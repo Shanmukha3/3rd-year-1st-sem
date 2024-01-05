@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sample</title>
+    <style>
+        body
+        {
+            background-image: linear-gradient(90deg, pink,rgb(50, 174, 227));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin:90px auto;
+        }
+        .a
+        {
+            background-color: rgb(69, 194, 115);
+            width: 300px;
+            height: 300px;
+            text-align: center;
+        }
+
+        .b
+        {
+            background-color:pink;
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            
+        }
+
+        .main{
+            background-color:rgb(199, 34, 61);
+            width: 620px;
+            height: 400px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+
+        }
+
+        input:hover{
+            background-color: rgb(179, 174, 46);
+        }
+        
+        button:hover{
+            background-color: rgb(141, 59, 59);
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="b">
+            <p>name is shannu</p>
+        </div>
+        <div class="a">
+            <table>
+                <tr>
+                    <td> <p></p>Username:  </p></td>
+                    <td><input id="a" type="text" placeholder="please enter name" oninput="username()"></td>
+                </tr> 
+                <tr>
+                     <td> <span style="color: red;" id="error1"></span></td>
+                </tr>
+                <tr>
+                    <td> <p></p>Email:  </p></td>
+                    <td><input id="c" type="text" placeholder="enter your mail" oninput="mail()"></td>
+                </tr>
+                <tr>
+                         <td><span style="color: red;" id="error2"></span><br></td>  
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input id="b" type="password" placeholder="password" oninput="password()"></td>
+                </tr>
+                <tr>
+                    <span style="color: red;" id="error3"></span><br>
+                </tr>
+                <tr>
+                    <td><br><button type="button" onclick="submit()">Submit</button></td>
+                    <td><br><button type="button" onclick="reset()">Reset</button></td>
+                </tr>
+        </table>
+        </div>
+    </div>
+    <script>
+        function username() {
+            var name = document.getElementById("a").value;
+            var error1 = document.getElementById("error1");
+            let flag=0;
+            error1.innerHTML="First character should be captial";
+            if(name.length==0)
+                error1.innerHTML="";
+            else if(name[0]>='A' && name[0]<='Z')
+            {
+                for(i=0;i<name.length;i++)
+                {
+                    if(name[i]>='0' && name[i]<='9')
+                    {
+                        error1.innerHTML="";
+                        flag=1;
+                    }
+                    else if(flag==1)
+                    {
+                        error1.innerHTML="";
+                    }
+                    else
+                    error1.innerHTML="Username should contain atleast one digit";
+                }
+            }
+            else
+                error1.innerHTML = "First character should be captial";}
+
+        function password()
+        {
+            var name2 = document.getElementById("b").value;
+            var error2 = document.getElementById("error2");
+            let i=0,f1=0,f2=0,f3=0;
+            var specialCharacters = "!@#$%^&*()_+{}[]:;<>,.?~\\/-=";          
+              if(name2.length==0)
+                error2.innerHTML="";
+            else
+            {
+                for(i=0;i<name2.length;i++)
+                {
+                    if((name2[i]>='A' && name2[i]<='Z'))
+                    {
+                        f1=1;
+                    }
+                    else if((name2[i]>='a' && name2[i]<='z') )
+                    {
+                        f2=1;
+                    }
+                    else if (specialCharacters.indexOf(name2[i]) !== -1) 
+                        f3=1;
+                    else
+                        error2.innerHTML="";
+
+                    if(f1==1 && f2==1 && f3==1)
+                        error2.innerHTML="";
+                    else if(f1==1 &&f3==1)
+                        error2.innerHTML="should contain  1 lower case";
+                    else if(f2==1 &&f3==1)
+                        error2.innerHTML="should contain 1 uppercase letter";
+                    else if(f1==1 && f2==1)
+                        error2.innerHTML="should contain 1 special characters"
+                    else if(f1==1)
+                        error2.innerHTML="should contain 1 lower and 1 special";
+                    else if(f2==1)
+                        error2.innerHTML="should contain 1 upper and 1 special";
+                    else if(f3==1)
+                        error2.innerHTML="should contain 1 lower and 1 upper";
+                    else
+                        error2.innerHTML="should contain 1 uppercase letter and 1 lower case and 1 special ";  
+                }
+            }
+        }
+
+        function mail()
+        {
+            var name2 = document.getElementById("c").value;
+            var error3 = document.getElementById("error3");   
+            if(name2=="")
+            error3.innerHTML=""
+            else
+            {
+                var pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/;
+                if(pattern.test(name2))
+                error3.innerHTML=""
+                else
+                error3.innerHTML="enter correct mail"
+            }
+        }
+    
+        function submit()
+        {
+            document.getElementById('a').value=""
+            document.getElementById('b').value=""
+            document.getElementById('c').value=""
+        }
+
+        function reset()
+        {
+            document.getElementById('a')=""
+            document.getElementById('b')=""
+            document.getElementById('c')=""
+        }
+    </script>
+</body>
+</html>
